@@ -1,3 +1,4 @@
+package SEF_4;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -16,13 +17,12 @@ public class CommentTest_1 {
 
         
         String comment = "Consectetur adipiscing elit, sed do eiusmod"; //Replace with comment body
-
+        int additional_comments = 0;
         String[] tags = tags_string.split(",");
         Post post = new Post(1, postTitle, body, tags, type, emergency);
-        //post.addComment(comment);
-        //post.addComment(comment);
-        //post.addComment(comment);
-        //post.addComment(comment);
+        for(int count = 0; count < additional_comments; count++){
+            post.addComment(comment);
+        }
         assertEquals(true, post.addComment(comment));   
     }
 }
