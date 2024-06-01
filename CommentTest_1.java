@@ -9,15 +9,17 @@ public class CommentTest_1 {
     @Test
 
     public void CommentTest(){
-        String postTitle = "MyFirstPost";
-        String tags_string = "java, c++";
-        String type = "Easy";
-        String emergency = "Ordinary"; 
+        String postTitle = "Could I Get Java Help"; //Replace with 'postTitle' data
+        String tags_string = "java, c++"; //Replace with 'tags_string' data
+        String type = "Easy"; //Repalce with 'type' data
+        String emergency = "Ordinary"; //Replace with 'emergency' data
         String body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor."; 
+        //^^Replace with 'body' data
 
         
-        String comment = "Consectetur adipiscing elit, sed do eiusmod"; //Replace with comment body
-        int additional_comments = 0;
+        String comment = "better write it in java code than python"; //Replace with 'commentBody' data
+        int additional_comments = 0; //Replace with 'additional_comments' data
+
         String[] tags = tags_string.split(",");
         Post post = new Post(1, postTitle, body, tags, type, emergency);
         for(int count = 0; count < additional_comments; count++){
