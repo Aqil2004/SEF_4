@@ -1,4 +1,3 @@
-package SEF_4;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -9,6 +8,7 @@ public class CommentTest_1 {
     @Test
 
     public void CommentTest(){
+        //I have commented which variables can be changed for testing
         String postTitle = "Could I Get Java Help"; //Replace with 'postTitle' data
         String tags_string = "java, c++"; //Replace with 'tags_string' data
         String type = "Easy"; //Repalce with 'type' data
@@ -17,7 +17,7 @@ public class CommentTest_1 {
         //^^Replace with 'body' data
 
         
-        String comment = "better write it in java code than python"; //Replace with 'commentBody' data
+        String comment = "Better write it in java code than python"; //Replace with 'commentBody' data
         int additional_comments = 0; //Replace with 'additional_comments' data
 
         String[] tags = tags_string.split(",");

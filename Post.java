@@ -1,5 +1,3 @@
-package SEF_4;
-
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileWriter;
@@ -45,7 +43,7 @@ public class Post {
         this.postEmergency = emergency;
     }
 
-    private boolean addPost_condition_1(){
+    private boolean addPost_condition_1(){ //addPost condition 1 to check character count and first five characters for the title
         String str = postTitle.substring(0, 5);
         if(postTitle.length() >= 10 && postTitle.length() <= 250){
             for(int i = 0; i < 5; i++){
@@ -57,13 +55,13 @@ public class Post {
         }
         return false;
     }
-    private boolean addPost_condition_2(){
+    private boolean addPost_condition_2(){ //addPost condition 2 to check character count for the post body
         if(postBody.length() >= 250){
             return true;
         }
         return false;
     }
-    private boolean addPost_condition_3(){
+    private boolean addPost_condition_3(){ //addPost condition 3 to check number of tags in the post, character count of tags and upper case characters
         if(postTags.length >= 2 && postTags.length <= 5){
             for(String tag: postTags){
                 if(tag.length() >= 2 && tag.length() <= 10){
@@ -79,7 +77,7 @@ public class Post {
         return false;
     }
 
-    private boolean addPost_condition_4(){
+    private boolean addPost_condition_4(){ //addPost condition 4 to check tags and character count based on type of post 
         if(postType == "Easy"){
             if(postTags.length <= 3){
                 return true;
@@ -91,7 +89,7 @@ public class Post {
         }
         return false;
     }
-    private boolean addPost_condition_5(){
+    private boolean addPost_condition_5(){ //addPost condition 5 to check for type of post based on emergency level of post
         if(postType == "Easy"){
             if(postEmergency == "Ordinary"){
                 return true;
@@ -104,7 +102,7 @@ public class Post {
         return false;
     }
         
-    private boolean addComment_condition_1(String comment){
+    private boolean addComment_condition_1(String comment){ //addComment condition 1 to check for word count and uppercase letter
         int word_count = comment.split(" ").length;
         if(word_count >= 4 && word_count <= 10 && Character.isUpperCase(comment.charAt(0))){
             return true;
@@ -112,7 +110,7 @@ public class Post {
         return false;
     }
 
-    private boolean addComment_condition_2(){
+    private boolean addComment_condition_2(){ //addComment condition 2 to check the number of comments in the post based on the type of post
         if(postType == "Easy" || postEmergency == "Ordinary"){
             if(postComments.size() < 3){
                 return true;
@@ -126,11 +124,12 @@ public class Post {
     }
 
     public boolean addPost()
+    //Validates post and creates a separate post text file
     {
-        if(addPost_condition_1() && addPost_condition_2() && addPost_condition_3() && addPost_condition_4() && addPost_condition_5()){
+        if(addPost_condition_1() && addPost_condition_2() && addPost_condition_3() && addPost_condition_4() && addPost_condition_5()){ //Calls five function checks for cleaner code
             File post = new File("post.txt");
             try {
-                post.createNewFile();
+                post.createNewFile(); //Creates the text file
                 String fileContent = Integer.toString(postID) + "\n" + postTitle + "\n" + postBody + "\n" + String.join(",", postTags) + "\n" + postType + "\n" + postEmergency + "\n" + postComments;
                 FileWriter writer = new FileWriter("post.txt");
                 writer.write(fileContent);
@@ -142,19 +141,20 @@ public class Post {
         }
         return false;
     }
-    public boolean addComment(String content)
+    public boolean addComment(String content) 
+    //This function would add a comment to a post 
     {
         comment_count++;
-        int commentID = comment_count;
+        int commentID = comment_count; //Keeping count of comments
         String commentBody = content;
-        if(addComment_condition_1(commentBody) && addComment_condition_2()){
-            try {
+        if(addComment_condition_1(commentBody) && addComment_condition_2()){ //Calls two function checks for cleaner code
+            try { //Creates a separate text file
                 String post_file_name = Integer.toString(postID) + " - " + Integer.toString(commentID);
                 String fileContent = Integer.toString(postID) + "\n" + Integer.toString(commentID) + "\n" + commentBody;
                 FileWriter writer = new FileWriter(post_file_name);
                 writer.write(fileContent);
                 writer.close();
-                postComments.add(post_file_name);
+                postComments.add(post_file_name); //Adds file name to post's comments array
             }catch (IOException e){
                 System.err.println("An error occured!");
             }
@@ -164,6 +164,7 @@ public class Post {
     }
 
     public static void main(String[] args) {
+        //This code has a basic UI for inputing values
         Scanner post_input_obj = new Scanner(System.in);
         System.out.println("Enter title of Post:");
         String titleName = post_input_obj.nextLine();

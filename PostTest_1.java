@@ -1,4 +1,3 @@
-package SEF_4;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -9,6 +8,7 @@ public class PostTest_1 {
     @Test
 
     public void postTest(){
+        //I have commented which variables can be changed for testing
         String postTitle = "MyFirstPost"; //Replace with 'postTitle' data
         String tags_string = "c++,java"; //Replace with 'tags_string' data
         String type = "Easy"; //Repalce with 'type' data
